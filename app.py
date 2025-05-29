@@ -18,7 +18,7 @@ class Rating(db.Model):
     rating = db.Column(db.Integer, nullable=False)
 
 @app.before_first_request
-def create_tables():
+with app.app_context():
     db.create_all()
 
 @app.route('/rate', methods=['POST'])
